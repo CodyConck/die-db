@@ -3,8 +3,6 @@ import { feathers } from '@feathersjs/feathers'
 import authenticationClient from '@feathersjs/authentication-client'
 import { toolsClient } from './services/api/tools/tools.shared.js'
 
-import { apiToolsClient } from './services/api/tools/tools.shared.js'
-
 /**
  * Returns a  client for the die-db app.
  *
@@ -19,8 +17,6 @@ export const createClient = (connection, authenticationOptions = {}) => {
   client.configure(connection)
   client.configure(authenticationClient(authenticationOptions))
   client.set('connection', connection)
-
-  client.configure(apiToolsClient)
 
   client.configure(toolsClient)
 
