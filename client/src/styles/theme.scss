@@ -1,0 +1,88 @@
+// Bootstrap functions
+@import "./bootstrap/functions";
+
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+
+// Bootstrap SCCS vars
+$white: #fff !default;
+$gray-100: #f6f8fc !default;
+$gray-200: #f1f4f9 !default;
+$gray-300: #e2e8f0 !default;
+$gray-400: #cbd4e1 !default;
+$gray-500: #94a3b8 !default;
+$gray-600: #64748b !default;
+$gray-700: #475569 !default;
+$gray-800: #27364b !default;
+$gray-900: #1e2a3b !default;
+$black: #050520 !default;
+
+$blue: #2563eb !default;
+$indigo: #4032dc !default;
+$purple: #575fcf !default;
+$pink: #cb3668 !default;
+$red: #E55959 !default;
+$orange: #cf4920 !default;
+$yellow: #FFF7bc !default;
+$green: #2BB67D!default;
+$teal: #638404 !default;
+$cyan: #007ea8 !default;
+
+$primary: $purple  !default;
+$secondary: $gray-600  !default;
+$success: $green  !default;
+$info: $cyan  !default;
+$warning: $yellow  !default;
+$danger: $red  !default;
+$light: $gray-400  !default;
+$dark: $black  !default;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+  ) !default;
+
+// $body-color: $gray-800;
+// $border-color: $gray-400;
+
+$enable-shadows: true;
+$enable-negative-margins: true;
+
+
+$font-family-sans-serif: "Libre Franklin",
+  -apple-system,
+  BlinkMacSystemFont,
+  Segoe UI,
+  Roboto,
+  Oxygen,
+  Ubuntu,
+  Cantarell,
+  Fira Sans,
+  Droid Sans,
+  Helvetica Neue,
+  sans-serif;
+
+@import "./bootstrap/bootstrap.scss";
+@import "./_loader.scss";
+
+
+.fade-in {
+  animation: fadeIn;
+  animation-duration: 0.5s;
+  &.fast {
+    animation-duration: 0.25s;
+  }
+  &.faster {
+    animation-duration: 0.15s;
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
