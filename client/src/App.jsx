@@ -121,18 +121,18 @@ function App() {
   return (
     <>
       <AppProvider app={app}>
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="sign-in" element={<SignIn />} />
-            <Route path="edittool" element={<EditTool />} />
-            <Route path="newtool" element={<NewTools />} />
-            <Route path="toolslist" element={<ToolsList />} />
-          </Routes>
-        </Router>
         <AppStateProvider>
           <QueryClientProvider client={queryClient}>
-            <Page />
+            <Router>
+              <Page />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="sign-in" element={<SignIn />} />
+                <Route path="edittool" element={<EditTool />} />
+                <Route path="newtool" element={<NewTools />} />
+                <Route path="toolslist" element={<ToolsList />} />
+              </Routes>
+            </Router>
           </QueryClientProvider>
         </AppStateProvider>
       </AppProvider>
