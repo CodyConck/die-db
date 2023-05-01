@@ -17,14 +17,14 @@ import SignIn from "./pages/SignIn";
 import EditTool from "./pages/EditTool";
 import NewTools from "./pages/NewTools";
 import ToolsList from "./pages/ToolsList";
-import Navigation from "./components/Navbar";
+import Nav from "./components/Navbar";
 
 const queryClient = new QueryClient();
 
 function Page() {
   return (
     <Container>
-      <Navigation />
+      <Nav />
       <div className="mb-4">
         <NewTool />
       </div>
@@ -124,7 +124,6 @@ function App() {
         <AppStateProvider>
           <QueryClientProvider client={queryClient}>
             <Router>
-              <Page />
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="sign-in" element={<SignIn />} />
@@ -132,6 +131,7 @@ function App() {
                 <Route path="newtool" element={<NewTools />} />
                 <Route path="toolslist" element={<ToolsList />} />
               </Routes>
+              <Page />
             </Router>
           </QueryClientProvider>
         </AppStateProvider>
