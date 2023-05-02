@@ -2,7 +2,8 @@
 import { MongoClient } from 'mongodb'
 
 export const mongodb = (app) => {
-  const connection = app.get('mongodb')
+  // const connection = app.get('mongodb')
+  const connection = process.env.MONGO_URL;
   const database = new URL(connection).pathname.substring(1)
   const mongoClient = MongoClient.connect(connection).then((client) => client.db(database))
 
