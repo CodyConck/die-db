@@ -9,6 +9,7 @@ function NewTool() {
   const queryClient = useQueryClient();
 
   async function onSubmit(data, formik) {
+    // console.log(data);
     try {
       const result = await app.service("api/tools").create(data);
       console.log(result);
