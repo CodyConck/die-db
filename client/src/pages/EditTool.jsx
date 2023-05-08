@@ -2,14 +2,16 @@
 import { Table } from "reactstrap";
 import { useQuery } from "@tanstack/react-query";
 import { useApp } from "../hooks/index.js";
+import { useParams } from "react-router-dom";
 
 const EditTool = () => {
+  const { id } = useParams(); // get the ID from the URL
   const app = useApp();
-  const { isLoading, data } = useQuery(["api/tools"], () => {
-    return app.service("api/tools").find({ query: { $limit: 50 } });
+  const { isLoading, data } = useQuery(["api/tools", id], () => {
+    return app.service("api/tools").get(id);
   });
   if (isLoading) {
-    return null;
+    return <div>Loading...</div>;
   }
   return (
     <Table>
@@ -22,16 +24,12 @@ const EditTool = () => {
         </tr>
       </thead>
       <tbody>
-        {data.data.map((result) => {
-          return (
-            <tr key={result._id}>
-              <th scope="row">{result._id}</th>
-              <td>{result.clientId}</td>
-              <td>{result.name}</td>
-              <td>{result.size}</td>
-            </tr>
-          );
-        })}
+        <tr key={data._id}>
+          <th scope="row">{data._id}</th>
+          <td>{data.clientId}</td>
+          <td>{data.name}</td>
+          <td>{data.size}</td>
+        </tr>
       </tbody>
     </Table>
   );

@@ -10,7 +10,7 @@ const Nav = () => {
       <Link to="sign-in">Sign-In</Link>
       <Link to="toolslist">Tools List</Link>
       <Link to="newtool">New Tools</Link>
-      <Link to="edittool">Edit Tools</Link>
+      {/* <Link to="edittool">Edit Tools</Link> */}
     </Navbar>
   );
 };

@@ -2,6 +2,7 @@
 import { Table } from "reactstrap";
 import { useQuery } from "@tanstack/react-query";
 import { useApp } from "../hooks/index.js";
+import { Link } from "react-router-dom";
 
 function ToolsList() {
   const app = useApp();
@@ -24,8 +25,11 @@ function ToolsList() {
       <tbody>
         {data.data.map((result) => {
           return (
+            //link when clicked will take you to specific tools info for editing based off of _id
             <tr key={result._id}>
-              <th scope="row">{result._id}</th>
+              <Link to={`/edittools/${result._id}`}>
+                <th scope="row">{result._id}</th>
+              </Link>
               <td>{result.clientId}</td>
               <td>{result.name}</td>
               <td>{result.size}</td>

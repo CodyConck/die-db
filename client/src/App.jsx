@@ -4,7 +4,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "./styles/theme.scss";
 
 import { Container } from "reactstrap";
-// import { FormItem, Formik, Form, FormSubmit } from "./components/Form";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -36,7 +35,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="sign-in" element={<SignIn />} />
-                <Route path="edittool" element={<EditTool />} />
+                <Route path="edittools/:id" element={<EditTool />} />
                 <Route path="newtool" element={<NewTools />} />
                 <Route path="toolslist" element={<ToolsList />} />
               </Routes>
