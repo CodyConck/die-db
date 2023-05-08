@@ -16,10 +16,10 @@ function ToolsList() {
     <Table>
       <thead>
         <tr>
-          <td>ID</td>
-          <td>Client ID</td>
-          <td>Name</td>
-          <td>Size</td>
+          <th>ID</th>
+          <th>Client ID</th>
+          <th>Name</th>
+          <th>Size</th>
         </tr>
       </thead>
       <tbody>
