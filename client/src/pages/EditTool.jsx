@@ -17,15 +17,15 @@ const EditTool = () => {
     <Table>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Client ID</th>
-          <th>Name</th>
-          <th>Size</th>
+          <td>ID</td>
+          <td>Client ID</td>
+          <td>Name</td>
+          <td>Size</td>
         </tr>
       </thead>
       <tbody>
         <tr key={data._id}>
-          <th scope="row">{data._id}</th>
+          <td>{data._id}</td>
           <td>{data.clientId}</td>
           <td>{data.name}</td>
           <td>{data.size}</td>

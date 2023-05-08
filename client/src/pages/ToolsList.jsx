@@ -16,10 +16,10 @@ function ToolsList() {
     <Table>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Client ID</th>
-          <th>Name</th>
-          <th>Size</th>
+          <td>ID</td>
+          <td>Client ID</td>
+          <td>Name</td>
+          <td>Size</td>
         </tr>
       </thead>
       <tbody>
@@ -28,7 +28,7 @@ function ToolsList() {
             //link when clicked will take you to specific tools info for editing based off of _id
             <tr key={result._id}>
               <Link to={`/edittools/${result._id}`}>
-                <th scope="row">{result._id}</th>
+                <td>{result._id}</td>
               </Link>
               <td>{result.clientId}</td>
               <td>{result.name}</td>
