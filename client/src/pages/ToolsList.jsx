@@ -17,8 +17,8 @@ function ToolsList() {
       <thead>
         <tr>
           <th>ID</th>
-          <th>Client ID</th>
-          <th>Name</th>
+          <th>Client Name</th>
+          <th>Tool Name</th>
           <th>Size</th>
         </tr>
       </thead>
@@ -30,8 +30,8 @@ function ToolsList() {
               <Link to={`/edittools/${result._id}`}>
                 <td>{result._id}</td>
               </Link>
-              <td>{result.clientId}</td>
-              <td>{result.name}</td>
+              <td>{result.clientName}</td>
+              <td>{result.toolName}</td>
               <td>{result.size}</td>
             </tr>
           );

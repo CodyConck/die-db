@@ -29,15 +29,15 @@ function NewTool() {
         <Formik
           onSubmit={onSubmit}
           initialValues={{
-            clientId: undefined,
-            name: undefined,
+            clientName: undefined,
+            toolName: undefined,
             description: undefined,
             size: undefined,
           }}
         >
           <Form>
-            <FormItem name="clientId" label="Client ID" />
-            <FormItem name="name" label="Name" />
+            <FormItem name="clientName" label="Client Name" />
+            <FormItem name="toolName" label="Tool Name" />
             <FormItem
               name="description"
               type="textarea"

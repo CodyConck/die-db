@@ -18,17 +18,19 @@ const EditTool = () => {
       <thead>
         <tr>
           <th>ID</th>
-          <th>Client ID</th>
-          <th>Name</th>
+          <th>Client Name</th>
+          <th>Tool Name</th>
           <th>Size</th>
+          <th>Description</th>
         </tr>
       </thead>
       <tbody>
         <tr key={data._id}>
           <td>{data._id}</td>
-          <td>{data.clientId}</td>
-          <td>{data.name}</td>
+          <td>{data.clientName}</td>
+          <td>{data.toolName}</td>
           <td>{data.size}</td>
+          <td>{data.description}</td>
         </tr>
       </tbody>
     </Table>

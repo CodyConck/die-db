@@ -1,5 +1,4 @@
-import { schema, yup } from "../../../lib/validation.js";
-
+import { schema, yup } from '../../../lib/validation.js'
 
 export const toolsPath = 'api/tools'
 
@@ -14,8 +13,8 @@ export const toolsClient = (client) => {
 }
 
 export const toolsSchema = schema({
-  clientId: yup.string().trim().required().label('Client ID'),
-  name: yup.string().trim().max(100).required().label('Name'),
+  clientName: yup.string().trim().required().label('Client Name'),
+  toolName: yup.string().trim().max(100).required().label('Tool Name'),
   description: yup.string().trim().max(500).label('Name'),
-  size: yup.string().trim().oneOf(['sm', 'lg', 'xl']).label('Size'),
-});
+  size: yup.string().trim().oneOf(['sm', 'lg', 'xl']).label('Size')
+})
