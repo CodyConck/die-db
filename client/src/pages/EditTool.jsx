@@ -1,32 +1,31 @@
 // import React from 'react'
-// import { Table } from "reactstrap";
-import { useState } from "react";
 import { Card, CardBody } from "reactstrap";
 import { Formik, Form, FormItem, FormSubmit } from "../components/Form";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useApp } from "../hooks/index.js";
 import { useParams } from "react-router-dom";
 
 const EditTool = () => {
   const { id } = useParams(); // get the ID from the URL
   const app = useApp();
+  const queryClient = useQueryClient();
   const { isLoading, data } = useQuery(["api/tools", id], () => {
     return app.service("api/tools").get(id);
   });
 
-  const [clientName, setClientName] = useState(data?.clientName || "");
-  const [toolName, setToolName] = useState(data?.toolName || "");
-  const [description, setDescription] = useState(data?.description || "");
-  const [size, setToolSize] = useState(data?.size || "");
-
-  const { mutate } = useMutation((updatedTool) => {
-    return app.service("api/tools").update(id, updatedTool);
-  });
-
-  const updateTool = (event) => {
-    event.preventDefault();
-    mutate({ clientName, toolName, description, size });
-  };
+  async function updateTool(tool, formik) {
+    try {
+      const result = await app.service("api/tools").update(tool);
+      console.log(result);
+      queryClient.invalidateQueries(["api/tools"]);
+      formik.resetForm();
+    } catch (error) {
+      console.error(error);
+      if (error.errors) {
+        formik.setErrors(error.errors);
+      }
+    }
+  }
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -46,44 +45,17 @@ const EditTool = () => {
         >
           <Form>
             <FormItem name="_id" label="Tool ID" value={data._id} />
-            <FormItem
-              name="clientName"
-              label="Client Name"
-              onChange={(event) => setClientName(event.target.value)}
-            />
-            <FormItem
-              name="toolName"
-              label="Tool Name"
-              onChange={(event) => setToolName(event.target.value)}
-            />
+            <FormItem name="clientName" label="Client Name" />
+            <FormItem name="toolName" label="Tool Name" />
             <FormItem
               name="description"
               type="textarea"
               rows="4"
               label="Description"
-              onChange={(event) => setDescription(event.target.value)}
             />
-            <FormItem
-              name="size"
-              type="radio"
-              value="sm"
-              label="Small"
-              onChange={(event) => setToolSize(event.target.value)}
-            />
-            <FormItem
-              name="size"
-              type="radio"
-              value="lg"
-              label="Large"
-              onChange={(event) => setToolSize(event.target.value)}
-            />
-            <FormItem
-              name="size"
-              type="radio"
-              value="xl"
-              label="Extra Large"
-              onChange={(event) => setToolSize(event.target.value)}
-            />
+            <FormItem name="size" type="radio" value="sm" label="Small" />
+            <FormItem name="size" type="radio" value="lg" label="Large" />
+            <FormItem name="size" type="radio" value="xl" label="Extra Large" />
             <FormSubmit>Update</FormSubmit>
           </Form>
         </Formik>
