@@ -15,10 +15,10 @@ const EditTool = () => {
 
   async function updateTool(tool, formik) {
     try {
-      const result = await app.service("api/tools").update(tool);
+      const result = await app.service("api/tools").update(id, tool);
       console.log(result);
       queryClient.invalidateQueries(["api/tools"]);
-      formik.resetForm();
+      formik.resetForm({ values: result });
     } catch (error) {
       console.error(error);
       if (error.errors) {
@@ -36,12 +36,7 @@ const EditTool = () => {
       <CardBody>
         <Formik
           onSubmit={updateTool}
-          initialValues={{
-            clientName: `${data.clientName}`,
-            toolName: `${data.toolName}`,
-            description: `${data.description}`,
-            size: `${data.size}`,
-          }}
+          initialValues={data}
         >
           <Form>
             <FormItem name="_id" label="Tool ID" value={data._id} />

@@ -2,7 +2,7 @@ import { schema, yup } from '../../../lib/validation.js'
 
 export const toolsPath = 'api/tools'
 
-export const toolsMethods = ['find', 'get', 'create', 'patch', 'remove']
+export const toolsMethods = ['find', 'get', 'create', 'update', 'patch', 'remove']
 
 export const toolsClient = (client) => {
   const connection = client.get('connection')
